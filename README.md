@@ -1,4 +1,5 @@
-# 📧 Email Notify Manager
+# <img width="462" height="102" alt="logo small" src="https://github.com/user-attachments/assets/16d1c7e5-e8a0-47b6-8801-267274db4bb2" />
+## Email Notify Manager
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub release](https://img.shields.io/github/release/cy-bertrand/email-notify-manager.svg)](https://github.com/cy-bertrand/email-notify-manager/releases)
@@ -14,12 +15,12 @@ L'administrateur configure les automations depuis son panel. Chaque utilisateur 
 
 | Fonctionnalité | Admin | Utilisateur |
 |---|---|---|
-| Créer / modifier / supprimer des automations | ✅ | — |
+| Créer / modifier / supprimer des automations de notification email | ✅ | — |
 | Configurer le serveur SMTP | ✅ | — |
-| Activer / désactiver une automation | — | ✅ |
+| Activer / désactiver les notifications email | — | ✅ |
 | Définir ses adresses email | — | ✅ |
-| Condition de localisation (home / away) | — | ✅ |
-| Condition horaire + jours | — | ✅ |
+| Conditions de localisation (home / away) | — | ✅ |
+| Conditions horaire + jours | — | ✅ |
 
 ---
 
@@ -60,9 +61,6 @@ Aucune copie manuelle du frontend n’est nécessaire. Le panel JavaScript est s
 | Mot de passe | `mot_de_passe_application` |
 | Adresse expéditeur | `votre@xyz.com` |
 | STARTTLS | ✅ |
-
-> **Gmail** : créez un [mot de passe d'application](https://support.google.com/accounts/answer/185833).  
-> **Office 365** : serveur `smtp.office365.com`, port `587`, STARTTLS activé.
 
 ### Étape 2 : Créer les automations (panel admin)
 
