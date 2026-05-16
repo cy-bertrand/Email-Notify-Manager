@@ -1,0 +1,43 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Email Notify Manager",
+        "description": "Configurez votre serveur SMTP pour les notifications email.",
+        "data": {
+          "smtp_server": "Serveur SMTP",
+          "smtp_port": "Port SMTP",
+          "smtp_username": "Nom d'utilisateur",
+          "smtp_password": "Mot de passe",
+          "smtp_sender": "Adresse expéditeur",
+          "smtp_sender_name": "Nom expéditeur",
+          "smtp_starttls": "Utiliser STARTTLS"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Connexion SMTP impossible. Vérifiez vos paramètres.",
+      "invalid_auth": "Authentification SMTP échouée.",
+      "unknown": "Erreur inattendue."
+    },
+    "abort": {
+      "already_configured": "Email Notify Manager est déjà configuré."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options SMTP",
+        "data": {
+          "smtp_server": "Serveur SMTP",
+          "smtp_port": "Port SMTP",
+          "smtp_username": "Nom d'utilisateur",
+          "smtp_password": "Mot de passe",
+          "smtp_sender": "Adresse expéditeur",
+          "smtp_sender_name": "Nom expéditeur",
+          "smtp_starttls": "Utiliser STARTTLS"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Exemples d'automations pour Email Notify Manager
+# Les automation_id doivent correspondre à ceux créés dans le panel admin.
+# ──────────────────────────────────────────────────────────────────────────────
+
+# 1. Alerte détection mouvement
+- id: "enm_security_motion"
+  alias: "ENM — Alerte mouvement"
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_detector
+      to: "on"
+  action:
+    - service: email_notify_manager.send_email_notification
+      data:
+        automation_id: "security_alert"
+        title: "🚨 Mouvement détecté — {{ now().strftime('%H:%M') }}"
+        message: "Mouvement détecté le {{ now().strftime('%d/%m/%Y à %H:%M') }}."
+        html_message: >
+          <h2 style="color:#c62828">🚨 Alerte Sécurité</h2>
+          <p>Mouvement détecté le <strong>{{ now().strftime('%d/%m/%Y à %H:%M') }}</strong>.</p>
+          <p>Capteur : {{ trigger.entity_id }}</p>
+
+# 2. Rapport énergie quotidien (20h)
+- id: "enm_energy_daily"
+  alias: "ENM — Rapport énergie quotidien"
+  trigger:
+    - platform: time
+      at: "20:00:00"
+  action:
+    - service: email_notify_manager.send_email_notification
+      data:
+        automation_id: "daily_energy_report"
+        title: "📊 Rapport énergie — {{ now().strftime('%d/%m/%Y') }}"
+        message: >
+          Consommation : {{ states('sensor.energy_today') | default('N/A') }} kWh
+          Production solaire : {{ states('sensor.solar_today') | default('N/A') }} kWh
+        html_message: >
+          <h2>📊 Rapport Énergie Quotidien</h2>
+          <table border="1" cellpadding="8" style="border-collapse:collapse;font-family:sans-serif">
+            <tr><td>Consommation</td><td><strong>{{ states('sensor.energy_today') | default('N/A') }} kWh</strong></td></tr>
+            <tr><td>Production solaire</td><td><strong>{{ states('sensor.solar_today') | default('N/A') }} kWh</strong></td></tr>
+          </table>
+
+# 3. Alerte température basse
+- id: "enm_heating_alert"
+  alias: "ENM — Alerte chauffage"
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.temperature_living_room
+      below: 17
+  condition:
+    - condition: time
+      after: "06:00:00"
+      before: "23:00:00"
+  action:
+    - service: email_notify_manager.send_email_notification
+      data:
+        automation_id: "heating_alert"
+        title: "🌡️ Température basse — {{ states('sensor.temperature_living_room') }}°C"
+        message: "La température du salon est à {{ states('sensor.temperature_living_room') }}°C. Vérifiez le chauffage."
+        html_message: >
+          <h2>🌡️ Alerte Température</h2>
+          <p>La température du salon est descendue à
+          <strong style="color:#c62828">{{ states('sensor.temperature_living_room') }}°C</strong>.</p>
+
+
+# 4. Alerte présence hors zone bureau
+- id: "enm_outside_work_zone"
+  alias: "ENM — Hors zone bureau"
+  trigger:
+    - platform: state
+      entity_id: person.alice
+  action:
+    - service: email_notify_manager.send_email_notification
+      data:
+        automation_id: "outside_work_zone"
+        title: "📍 Sortie de zone"
+        message: "Un utilisateur autorisé a quitté la zone configurée."

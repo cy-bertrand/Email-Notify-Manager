@@ -1,0 +1,43 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Email Notify Manager",
+        "description": "Configure your SMTP server for email notifications.",
+        "data": {
+          "smtp_server": "SMTP Server",
+          "smtp_port": "SMTP Port",
+          "smtp_username": "Username",
+          "smtp_password": "Password",
+          "smtp_sender": "Sender address",
+          "smtp_sender_name": "Sender name",
+          "smtp_starttls": "Use STARTTLS"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to SMTP server. Check your settings.",
+      "invalid_auth": "SMTP authentication failed.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "Email Notify Manager is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "SMTP Options",
+        "data": {
+          "smtp_server": "SMTP Server",
+          "smtp_port": "SMTP Port",
+          "smtp_username": "Username",
+          "smtp_password": "Password",
+          "smtp_sender": "Sender address",
+          "smtp_sender_name": "Sender name",
+          "smtp_starttls": "Use STARTTLS"
+        }
+      }
+    }
+  }
+}
