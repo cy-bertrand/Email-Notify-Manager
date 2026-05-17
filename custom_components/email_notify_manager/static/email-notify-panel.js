@@ -295,10 +295,17 @@ class EmailNotifyPanel extends HTMLElement {
   set hass(hass) {
     const first = !this._hass;
     this._hass = hass;
+    const wasAdmin = this._isAdmin;
     this._isAdmin = hass.user?.is_admin ?? false;
     if (first) {
       this._loadUser();
-      if (this._isAdmin) this._loadAdmin();
+    }
+    // Charger l'admin dès que is_admin devient true (même après le premier appel)
+    if (this._isAdmin && !wasAdmin) {
+      this._loadAdmin();
+    }
+    if (first || (!wasAdmin && this._isAdmin)) {
+      this._render();
     }
   }
 
