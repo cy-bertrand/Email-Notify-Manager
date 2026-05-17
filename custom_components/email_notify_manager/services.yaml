@@ -1,0 +1,38 @@
+send_email_notification:
+  name: Send email notification
+  description: >
+    Envoie une notification email aux utilisateurs abonnés à une automation donnée,
+    en respectant leurs préférences individuelles (activation, adresses, conditions).
+  fields:
+    automation_id:
+      name: Automation ID
+      description: Identifiant de l'automation définie dans le panel admin Email Notify Manager.
+      required: true
+      example: "security_alert"
+      selector:
+        text:
+    title:
+      name: Sujet
+      description: Sujet de l'email envoyé.
+      required: true
+      example: "🚨 Mouvement détecté"
+      selector:
+        text:
+    message:
+      name: Corps du message (texte)
+      description: Corps de l'email en texte brut.
+      required: true
+      example: "Mouvement détecté à 20:15."
+      selector:
+        text:
+          multiline: true
+    html_message:
+      name: Corps du message (HTML)
+      description: >
+        Corps de l'email en HTML (optionnel). Si fourni, l'email sera envoyé
+        en format multipart (texte + HTML).
+      required: false
+      example: "<h2>Alerte</h2><p>Mouvement détecté.</p>"
+      selector:
+        text:
+          multiline: true
