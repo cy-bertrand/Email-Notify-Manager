@@ -1,6 +1,8 @@
 # <img width="462" height="102" alt="logo small" src="https://github.com/user-attachments/assets/16d1c7e5-e8a0-47b6-8801-267274db4bb2" />
 ## Email Notify Manager
 
+## STILL IN DEVELOPMENT ##
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub release](https://img.shields.io/github/release/cy-bertrand/email-notify-manager.svg)](https://github.com/cy-bertrand/email-notify-manager/releases)
 [![Validate](https://github.com/cy-bertrand/email-notify-manager/actions/workflows/validate.yml/badge.svg)](https://github.com/cy-bertrand/email-notify-manager/actions/workflows/validate.yml)
