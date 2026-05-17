@@ -1,7 +1,8 @@
-"""Email Notify Manager v3."""
+"""Email Notify Manager."""
 from __future__ import annotations
 
 import logging
+# import time     # temporaire pour forcer le rechargement du JS du frontend lors des mises à jour
 from pathlib import Path
 
 import voluptuous as vol
@@ -84,7 +85,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         sidebar_title="Notifications Email",
         sidebar_icon="mdi:email-alert-outline",
         frontend_url_path="email-notify-manager",
-        config={"_panel_custom": {"name": "email-notify-panel", "module_url": "/api/email_notify_manager/static/email-notify-panel.js?v=3"}},
+        config={"_panel_custom": {"name": "email-notify-panel", "module_url": "/api/email_notify_manager/static/email-notify-panel.js?v=3.1.0"}}, # ajout d'un versionnage pour forcer le rechargement du JS à chaque mise à jour
+        #config={"_panel_custom": {"name": "email-notify-panel", "module_url": "/api/email_notify_manager/static/email-notify-panel.js?v=" + str(time.time())}}, # temporaire ajout d'un timestamp pour forcer le rechargement du JS à chaque mise à jour
         require_admin=False,
     )
     return True
@@ -96,5 +98,6 @@ async def _async_update_listener(hass: HomeAssistant, entry: ConfigEntry) -> Non
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.services.async_remove(DOMAIN, "send_email_notification")
+    frontend.async_remove_panel(hass, "email-notify-manager")
     hass.data.pop(DOMAIN, None)
     return True
