@@ -1,9 +1,15 @@
 /**
  * Email Notify Manager — Custom Panel
  * Panel combiné : onglet utilisateur + onglet admin (si admin HA)
+ *
+ * Changelog v3.1.1:
+ *  - Fix: onglet admin invisible si hass.user.is_admin chargé tardivement par HA
+ *  - Fix: restructuration du setter hass() — render() systématique au 1er appel
+ *  - Fix: détection robuste du changement de statut admin (is_admin !== wasAdmin)
+ *  - Fix: bouton admin masqué via style (display:none) plutôt que retiré du DOM
  */
 
-const VERSION = "3.1.0";
+const VERSION = "3.1.1";
 
 const DAYS = [
   { key:"mon", label:"Lun" }, { key:"tue", label:"Mar" }, { key:"wed", label:"Mer" },
@@ -296,14 +302,20 @@ class EmailNotifyPanel extends HTMLElement {
     const first = !this._hass;
     this._hass = hass;
     const wasAdmin = this._isAdmin;
-    this._isAdmin = hass.user?.is_admin || hass.user?.is_owner || false;
+    // Détection robuste : hass.user peut être chargé tardivement par HA
+    this._isAdmin = !!(hass.user?.is_admin || hass.user?.is_owner);
+
     if (first) {
+      // Premier appel : charger user, charger admin si droit connu, et toujours render
       this._loadUser();
-    }
-    if (this._isAdmin && !wasAdmin) {
-      this._loadAdmin();
+      if (this._isAdmin) this._loadAdmin();
       this._render();
-    } else if (first) {
+      return;
+    }
+
+    // Appels suivants : re-render si statut admin change (détection tardive du rôle)
+    if (this._isAdmin !== wasAdmin) {
+      if (this._isAdmin) this._loadAdmin();
       this._render();
     }
   }
@@ -464,7 +476,8 @@ class EmailNotifyPanel extends HTMLElement {
         </div>
         <div class="tab-bar">
           <button class="tab-btn ${this._tab==="user"?"active":""}" data-tab="user">Mes préférences</button>
-          ${this._isAdmin ? `<button class="tab-btn ${this._tab==="admin"?"active":""}" data-tab="admin">⚙ Administration</button>` : ""}
+          <button class="tab-btn ${this._tab==="admin"?"active":""}" data-tab="admin"
+            style="${this._isAdmin ? "" : "display:none"}">⚙ Administration</button>
         </div>
       </div>
     `;
