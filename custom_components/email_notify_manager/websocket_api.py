@@ -124,7 +124,8 @@ def async_register(hass: HomeAssistant, aut_store: AutomationStore, pref_store: 
         cfg = dict(entry.data); cfg.update(entry.options); cfg.pop("smtp_password", None)
         connection.send_result(msg["id"], {"configured": True, "smtp": cfg})
 
-    for cmd in [ws_user_get_automations, ws_user_save_prefs, ws_admin_get_automations, ws_admin_upsert_automation, ws_admin_delete_automation, ws_admin_get_smtp_config]:
-        hass.components.websocket_api.async_register_command(cmd)
+    for cmd in [ws_user_get_automations, ws_user_save_prefs, ws_admin_get_automations,
+            ws_admin_upsert_automation, ws_admin_delete_automation, ws_admin_get_smtp_config]:
+        websocket_api.async_register_command(hass, cmd)
 
     _LOGGER.debug("Email Notify Manager: WebSocket commands registered")
