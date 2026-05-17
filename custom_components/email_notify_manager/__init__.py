@@ -10,6 +10,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.helpers import config_validation as cv
 from homeassistant.components.http import StaticPathConfig
+from homeassistant.components import frontend
 
 from .const import DOMAIN, CONF_AUTOMATION_ID, ATTR_TITLE
 from .storage import AutomationStore, PreferencesStore
@@ -77,7 +78,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     register_ws(hass, aut_store, pref_store)
     entry.async_on_unload(entry.add_update_listener(_async_update_listener))
 
-    hass.components.frontend.async_register_built_in_panel(
+    frontend.async_register_built_in_panel(
+        hass,
         component_name="custom",
         sidebar_title="Notifications Email",
         sidebar_icon="mdi:email-alert-outline",
