@@ -4,9 +4,9 @@
   "after_dependencies": ["http"],
   "codeowners": ["@cy-bertrand"],
   "config_flow": true,
-  "documentation": "https://github.com/cy-bertrand/ha-email-notify-manager",
+  "documentation": "https://github.com/cy-bertrand/email-notify-manager",
   "iot_class": "local_push",
-  "issue_tracker": "https://github.com/cy-bertrand/ha-email-notify-manager/issues",
+  "issue_tracker": "https://github.com/cy-bertrand/email-notify-manager/issues",
   "requirements": [],
-  "version": "3.1.0",
+  "version": "3.1.0"
 }
