@@ -9,10 +9,9 @@ from aiohttp import web
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.helpers import config_validation as cv
-from homeassistant.const import ATTR_TITLE
 from homeassistant.components.http import StaticPathConfig
 
-from .const import DOMAIN, CONF_AUTOMATION_ID
+from .const import DOMAIN, CONF_AUTOMATION_ID, ATTR_TITLE
 from .storage import AutomationStore, PreferencesStore
 from .notify_sender import check_conditions, async_send_email
 from .websocket_api import async_register as register_ws

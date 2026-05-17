@@ -2,6 +2,8 @@
 
 DOMAIN = "email_notify_manager"
 
+ATTR_TITLE = "title"
+
 STORAGE_KEY_PREFS   = "email_notify_manager.preferences"
 STORAGE_KEY_CONFIG  = "email_notify_manager.automations"
 STORAGE_VERSION     = 1
