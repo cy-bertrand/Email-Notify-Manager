@@ -1,4 +1,4 @@
- "en": {
+  "en": {
     "title": "Email Notify Manager",
     "tabs": {
       "user": "My Preferences",
