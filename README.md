@@ -79,7 +79,12 @@ Aucune copie manuelle du frontend n'est nécessaire. Le panneau JavaScript est s
 4. Remplir :
    - **Identifiant** : `security_alert` (minuscules, chiffres, underscores)
    - **Libellé** : `Alerte sécurité — Détection mouvement`
-   - **Utilisateurs autorisés** : entrer les usernames HA ou les user_id
+   - **Utilisateurs autorisés** : entrer les [usernames HA ou les user_id](#user_id)
+
+--
+
+<img width="753" height="573" alt="image" src="https://github.com/user-attachments/assets/18dd84c5-d085-417b-b162-91e56e3356b6" />
+
 
 ### Étape 3 : L'appeler depuis une automation Home Assistant
 
@@ -115,8 +120,13 @@ Pour chaque automation, il peut :
    - Uniquement hors de certaines zones
 4. **Condition horaire** : définir une plage De/À + les jours de semaine
 
----
+--
 
+<img width="728" height="839" alt="image" src="https://github.com/user-attachments/assets/920ba753-1842-4297-aa1f-4ab13c57e3fd" />
+
+
+---
+<a id="user_id"></a>
 ## 🔍 Trouver le `user_id`
 
 **Option 1** : entrer simplement le **username HA** dans le champ "Utilisateurs autorisés". Attention à la casse.  
@@ -273,6 +283,10 @@ No manual frontend copy is required. The JavaScript panel is served directly by 
    - **Identifier**: `security_alert` (lowercase, numbers, underscores)
    - **Label**: `Security Alert — Motion Detection`
    - **Allowed users**: enter HA usernames or user IDs
+--
+
+<img width="753" height="573" alt="image" src="https://github.com/user-attachments/assets/18dd84c5-d085-417b-b162-91e56e3356b6" />
+
 
 ### Step 3: Call it from a Home Assistant automation
 
@@ -307,6 +321,11 @@ For each automation, they can:
    - Only in selected zones
    - Only outside selected zones
 4. **Time condition**: define a From/To range + weekdays
+
+--
+
+<img width="728" height="839" alt="image" src="https://github.com/user-attachments/assets/920ba753-1842-4297-aa1f-4ab13c57e3fd" />
+
 
 ---
 
