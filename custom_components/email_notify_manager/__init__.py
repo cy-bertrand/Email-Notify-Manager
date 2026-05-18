@@ -2,8 +2,8 @@
 from __future__ import annotations
 
 import logging
-# import time     # temporaire pour forcer le rechargement du JS du frontend lors des mises à jour
 from pathlib import Path
+from unittest.mock import call
 
 import voluptuous as vol
 from aiohttp import web
@@ -12,6 +12,7 @@ from homeassistant.core import HomeAssistant, ServiceCall
 from homeassistant.helpers import config_validation as cv
 from homeassistant.components.http import StaticPathConfig
 from homeassistant.components import frontend
+from homeassistant.components.frontend import add_extra_js_url  # pour ajouter le fichier js de l'icone custom dans le frontend de HA
 
 from .const import DOMAIN, CONF_AUTOMATION_ID, ATTR_TITLE
 from .storage import AutomationStore, PreferencesStore
@@ -46,22 +47,45 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         )
     ])
 
+    add_extra_js_url(hass, f"/api/email_notify_manager/static/enm-logo.js") # ce fichier JS contient l'enregistrement de l'icone custom "enm:logo" utilisée dans le panneau
+
     async def handle_send_email(call: ServiceCall) -> None:
         automation_id = call.data[CONF_AUTOMATION_ID]
         title = call.data[ATTR_TITLE]
         message = call.data["message"]
         html_message = call.data.get("html_message", "")
+
         aut = aut_store.get(automation_id)
         if not aut:
             _LOGGER.error("Automation '%s' introuvable dans ENM admin panel", automation_id)
             return
-        smtp_cfg = dict(entry.data); smtp_cfg.update(entry.options)
+
+        smtp_cfg = dict(entry.data)
+        smtp_cfg.update(entry.options)
         if not smtp_cfg.get("smtp_server"):
-            _LOGGER.error("SMTP non configuré")
+            _LOGGER.error("SMTP non configurÃ©")
             return
-        allowed_users = aut.get("allowed_users", [])
+
+        allowed_users = aut.get("allowed_users", [])  # noms OU UUIDs definis par l'admin
         sent_count = 0
-        target_user_ids = allowed_users
+
+        # Resolution : mapper les noms vers les vrais user_id (UUID) de HA
+        ha_users = await hass.auth.async_get_users()
+        if not allowed_users:
+            # Aucune restriction pour tous les utilisateurs non-system
+            target_user_ids = [u.id for u in ha_users if not u.system_generated]
+        else:
+            # Matcher par UUID ou par nom
+            target_user_ids = [
+                u.id for u in ha_users
+                if u.id in allowed_users or u.name in allowed_users
+            ]
+
+        _LOGGER.debug(
+            "send_email_notification '%s': allowed_users=%r â†’ target_user_ids=%r",
+            automation_id, allowed_users, target_user_ids
+        )
+
         for user_id in target_user_ids:
             prefs = pref_store.get_automation_prefs(user_id, automation_id)
             if not prefs.get("enabled", False):
@@ -73,7 +97,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 continue
             if await async_send_email(hass, smtp_cfg, emails, title, message, html_message):
                 sent_count += 1
-        _LOGGER.info("send_email_notification '%s': envoyé à %d utilisateur(s)", automation_id, sent_count)
+
+        _LOGGER.info(
+            "send_email_notification '%s': envoyÃ© Ã  %d utilisateur(s)", 
+            automation_id, sent_count
+        )
 
     hass.services.async_register(DOMAIN, "send_email_notification", handle_send_email, schema=SEND_SERVICE_SCHEMA)
     register_ws(hass, aut_store, pref_store)
@@ -82,11 +110,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     frontend.async_register_built_in_panel(
         hass,
         component_name="custom",
-        sidebar_title="Notifications Email",
-        sidebar_icon="mdi:email-alert-outline",
+        sidebar_title="Email Notify Manager",
+        # sidebar_icon="mdi:email-check-outline",
+        sidebar_icon="enm:logo",
         frontend_url_path="email-notify-manager",
-        config={"_panel_custom": {"name": "email-notify-panel", "module_url": "/api/email_notify_manager/static/email-notify-panel.js?v=3.1.0"}}, # ajout d'un versionnage pour forcer le rechargement du JS à chaque mise à jour
-        #config={"_panel_custom": {"name": "email-notify-panel", "module_url": "/api/email_notify_manager/static/email-notify-panel.js?v=" + str(time.time())}}, # temporaire ajout d'un timestamp pour forcer le rechargement du JS à chaque mise à jour
+        config={"_panel_custom": {"name": "email-notify-panel", "module_url": "/api/email_notify_manager/static/email-notify-panel.js?v=3.3.0"}}, # ajout d'un versionnage pour forcer le rechargement du JS chaque mise a jour
         require_admin=False,
     )
     return True

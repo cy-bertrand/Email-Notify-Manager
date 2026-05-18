@@ -1,0 +1,93 @@
+ "en": {
+    "title": "Email Notify Manager",
+    "tabs": {
+      "user": "My Preferences",
+      "admin": "⚙ Administration"
+    },
+    "common": {
+      "loading": "Loading...",
+      "cancel": "Cancel",
+      "save": "Save",
+      "saving": "Saving...",
+      "saved": "✓ Saved",
+      "edit": "Edit",
+      "delete": "Delete",
+      "all": "All",
+      "error_prefix": "Error",
+      "unsaved": "unsaved"
+    },
+    "days": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    },
+    "user": {
+      "intro_title": "Manage your email notifications",
+      "intro_body": "Enable or disable each automation, define recipient addresses, and set conditions (location, time).",
+      "empty_title": "No automation available for your account.",
+      "empty_body": "An administrator must add you to automations.",
+      "states": {
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "active_no_email": "Active · no email address",
+        "email_singular": "email address",
+        "email_plural": "email addresses"
+      },
+      "card": {
+        "notifications_label": "Enable notifications",
+        "notifications_help": "Receive emails for this automation",
+        "emails_section": "Destination email addresses",
+        "emails_placeholder": "Add (Press Enter)",
+        "conditions_section": "Send conditions",
+        "location": "📍 Location",
+        "time_range": "⏰ Time range",
+        "always": "Always",
+        "home_only": "At home only",
+        "away_only": "Away only",
+        "in_zones": "IN one or more zones",
+        "out_zones": "OUT of one or more zones",
+        "no_zone": "No zone available",
+        "from": "From",
+        "to": "to",
+        "revert": "Cancel"
+      }
+    },
+    "admin": {
+      "title": "Configured automations",
+      "new_automation": "+ New automation",
+      "empty": "No automation configured. Click \"+ New automation\" to start.",
+      "columns": {
+        "id": "Identifier",
+        "label": "Label",
+        "allowed_users": "Allowed users",
+        "active_subscribers": "Active subscribers"
+      },
+      "smtp_warning_title": "SMTP not configured.",
+      "smtp_warning_body": "Go to Settings > Devices & Services > Add integration > Email Notify Manager to configure the sending server.",
+      "help_title": "How to use in a Home Assistant automation",
+      "modal": {
+        "create_title": "New automation",
+        "edit_title": "Edit automation",
+        "id_label": "Unique identifier",
+        "id_placeholder": "e.g. securityalert",
+        "id_help": "Lowercase letters, numbers and underscores only. Used in your HA automations.",
+        "label_label": "Label",
+        "label_placeholder": "e.g. Security alert motion detection",
+        "users_label": "Allowed users",
+        "users_placeholder": "username or userid (Enter)",
+        "users_help": "Leave empty to allow all users.",
+        "users_help_2": "Enter the HA username or the user_id UUID.",
+        "save_create": "+ Create automation",
+        "save_edit": "Save"
+      },
+      "validation": {
+        "id_invalid": "Invalid identifier (lowercase, digits, underscores, max 64)",
+        "label_required": "Label is required"
+      },
+      "confirm_delete": "Delete automation \"{id}\" and all its preferences?"
+    }
+  },

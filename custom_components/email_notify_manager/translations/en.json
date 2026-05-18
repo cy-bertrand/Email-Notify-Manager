@@ -39,5 +39,29 @@
         }
       }
     }
+  },
+  "services": {
+    "send_email_notification": {
+      "name": "Send email notification",
+      "description": "Sends an email notification to users subscribed to a given automation, respecting their individual preferences.",
+      "fields": {
+        "automation_id": {
+          "name": "Automation ID",
+          "description": "Identifier of the automation defined in the Email Notify Manager admin panel."
+        },
+        "title": {
+          "name": "Subject",
+          "description": "Subject of the email."
+        },
+        "message": {
+          "name": "Message body (text)",
+          "description": "Plain text email body."
+        },
+        "html_message": {
+          "name": "Message body (HTML)",
+          "description": "Optional HTML email body."
+        }
+      }
+    }
   }
 }

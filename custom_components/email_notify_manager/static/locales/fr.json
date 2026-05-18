@@ -1,0 +1,94 @@
+  "fr": {
+    "title": "Email Notify Manager",
+    "tabs": {
+      "user": "Mes préférences",
+      "admin": "⚙ Administration"
+    },
+    "common": {
+      "loading": "Chargement…",
+      "cancel": "Annuler",
+      "save": "Sauvegarder",
+      "saving": "Sauvegarde...",
+      "saved": "✓ Sauvegardé",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "all": "Tous",
+      "error_prefix": "Erreur",
+      "unsaved": "non sauvegardé"
+    },
+    "days": {
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mer",
+      "thu": "Jeu",
+      "fri": "Ven",
+      "sat": "Sam",
+      "sun": "Dim"
+    },
+    "user": {
+      "intro_title": "Gérez vos notifications email",
+      "intro_body": "Activez ou désactivez chaque automation, définissez vos adresses de réception et posez des conditions (localisation, horaire).",
+      "empty_title": "Aucune automation disponible pour votre compte.",
+      "empty_body": "Un administrateur doit vous ajouter aux automations.",
+      "states": {
+        "enabled": "Actif",
+        "disabled": "Désactivé",
+        "active_no_email": "Actif · aucune adresse",
+        "email_singular": "adresse",
+        "email_plural": "adresses"
+      },
+      "card": {
+        "notifications_label": "Activer les notifications",
+        "notifications_help": "Recevez des emails pour cette automation",
+        "emails_section": "Adresses email de destination",
+        "emails_placeholder": "Ajouter (Entrée pour valider)",
+        "conditions_section": "Conditions d'envoi",
+        "location": "📍 Localisation",
+        "time_range": "⏰ Plage horaire",
+        "always": "Toujours",
+        "home_only": "À la maison uniquement",
+        "away_only": "Absent uniquement",
+        "in_zones": "DANS une ou plusieurs zones",
+        "out_zones": "HORS d'une ou plusieurs zones",
+        "no_zone": "Aucune zone disponible",
+        "from": "De",
+        "to": "à",
+        "revert": "Annuler"
+      }
+    },
+    "admin": {
+      "title": "Automations configurées",
+      "new_automation": "+ Nouvelle automation",
+      "empty": "Aucune automation email n'est configurée. Cliquez sur \"+ Nouvelle automation\" pour commencer.",
+      "columns": {
+        "id": "Identifiant",
+        "label": "Libellé",
+        "allowed_users": "Utilisateurs autorisés",
+        "active_subscribers": "Abonnés actifs"
+      },
+      "smtp_warning_title": "SMTP non configuré.",
+      "smtp_warning_body": "Allez dans Paramètres > Appareils et services > Ajouter une intégration > Email Notify Manager pour configurer le serveur d'envoi.",
+      "help_title": "Comment utiliser dans une automation HA",
+      "modal": {
+        "create_title": "Nouvelle automation",
+        "edit_title": "Modifier l'automation",
+        "id_label": "Identifiant unique",
+        "id_placeholder": "ex: securityalert",
+        "id_help": "Minuscules, chiffres et underscores uniquement. Utilisé dans vos automations HA.",
+        "label_label": "Libellé",
+        "label_placeholder": "ex: Alerte sécurité — Détection mouvement",
+        "users_label": "Utilisateurs autorisés",
+        "users_placeholder": "username ou user_id (Entrée)",
+        "users_help": "Laissez vide pour autoriser tous les utilisateurs.",
+        "users_help_2": "Entrez le username HA ou le user_id UUID.",
+        "save_create": "+ Créer l'automation",
+        "save_edit": "Enregistrer"
+      },
+      "validation": {
+        "id_invalid": "Identifiant invalide (minuscules, chiffres, underscores, max 64)",
+        "label_required": "Le libellé est obligatoire"
+      },
+      "confirm_delete": "Supprimer l'automation \"{id}\" et toutes ses préférences ?"
+    }
+  }
+};

@@ -39,5 +39,29 @@
         }
       }
     }
+  },
+  "services": {
+    "send_email_notification": {
+      "name": "Envoyer une notification email",
+      "description": "Envoie une notification email aux utilisateurs abonnés à une automation donnée, en respectant leurs préférences individuelles (activation, adresses, conditions).",
+      "fields": {
+        "automation_id": {
+          "name": "Automation ID",
+          "description": "Identifiant de l'automation définie dans le panel admin Email Notify Manager."
+        },
+        "title": {
+          "name": "Sujet",
+          "description": "Sujet de l'email envoyé."
+        },
+        "message": {
+          "name": "Corps du message (texte)",
+          "description": "Corps de l'email en texte brut."
+        },
+        "html_message": {
+          "name": "Corps du message (HTML)",
+          "description": "Corps de l'email en HTML (optionnel). Si fourni, l'email sera envoyé en format multipart (texte + HTML)."
+        }
+      }
+    }
   }
 }

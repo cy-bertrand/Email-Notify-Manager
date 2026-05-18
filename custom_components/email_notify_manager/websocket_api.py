@@ -32,7 +32,7 @@ def async_register(hass: HomeAssistant, aut_store: AutomationStore, pref_store: 
         result = []
         for aut_id, aut in aut_store.get_all().items():
             allowed = aut.get("allowed_users", [])
-            if not allowed or user.is_admin or user_id in allowed or user.name in allowed:
+            if not allowed or user_id in allowed or user.name in allowed:  # pour que admin voit toutes les automations ajouter or user.is_admin
                 prefs = pref_store.get_automation_prefs(user_id, aut_id)
                 result.append({"automation_id": aut_id, "label": aut.get("label", aut_id), "prefs": prefs})
         zones = []
