@@ -35,18 +35,18 @@ L'administrateur configure les automations depuis le panneau d'administration. C
 
 ## 📦 Installation via HACS
 
-### 1. Ajouter le dépôt custom
+### 1. HACS (recommended)
+
+1. Rechercher **Email Notify Manager** dans HACS
+2. Cliquer sur **Télécharger**
+3. Redémarrer Home Assistant
+
+### 2. Ou ... Ajouter le dépôt custom
 
 1. Ouvrir HACS → **Intégrations** → menu ⋮ → **Dépôts personnalisés**
 2. URL : `https://github.com/cy-bertrand/email-notify-manager`
 3. Catégorie : **Integration**
 4. Cliquer sur **Ajouter**
-
-### 2. Installer
-
-1. Rechercher **Email Notify Manager** dans HACS
-2. Cliquer sur **Télécharger**
-3. Redémarrer Home Assistant
 
 ### 3. Frontend servi automatiquement
 
@@ -238,18 +238,18 @@ The administrator configures automations from the admin panel. Each user then de
 
 ## 📦 Installation via HACS
 
-### 1. Add the custom repository
+### 1. HACS (recommended)
+
+1. Search for **Email Notify Manager** in HACS
+2. Cliquer sur **Downloadr**
+3. Restart Home Assistant
+
+### 2. Or... Add the custom repository
 
 1. Open HACS → **Integrations** → ⋮ menu → **Custom repositories**
 2. URL: `https://github.com/cy-bertrand/email-notify-manager`
 3. Category: **Integration**
 4. Click **Add**
-
-### 2. Install
-
-1. Search for **Email Notify Manager** in HACS
-2. Click **Download**
-3. Restart Home Assistant
 
 ### 3. Frontend served automatically
 
