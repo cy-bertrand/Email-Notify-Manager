@@ -1,6 +1,6 @@
 # <img width="462" height="102" alt="logo small" src="https://github.com/user-attachments/assets/16d1c7e5-e8a0-47b6-8801-267274db4bb2" />
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+[![HACS Default](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
 [![GitHub release](https://img.shields.io/github/release/cy-bertrand/email-notify-manager.svg)](https://github.com/cy-bertrand/email-notify-manager/releases)
 [![Validate](https://github.com/cy-bertrand/email-notify-manager/actions/workflows/validate.yml/badge.svg)](https://github.com/cy-bertrand/email-notify-manager/actions/workflows/validate.yml)
 
@@ -36,6 +36,8 @@ L'administrateur configure les automations depuis le panneau d'administration. C
 ## 📦 Installation via HACS
 
 ### 1. HACS (recommended)
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=cy-bertrand&repository=Email-Notify-Manager&category=integration)
 
 1. Rechercher **Email Notify Manager** dans HACS
 2. Cliquer sur **Télécharger**
@@ -239,6 +241,8 @@ The administrator configures automations from the admin panel. Each user then de
 ## 📦 Installation via HACS
 
 ### 1. HACS (recommended)
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=cy-bertrand&repository=Email-Notify-Manager&category=integration)
 
 1. Search for **Email Notify Manager** in HACS
 2. Cliquer sur **Downloadr**
